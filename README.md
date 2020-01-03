@@ -8,6 +8,7 @@ Princeify uses the Musixmatch API to pull up song lyrics (well, at least 30% of 
 
 ````
 
+
 {
 message: {
 header: {
@@ -19,7 +20,7 @@ lyrics: {
 lyrics_id: 19610684,
 explicit: 0,
 lyrics_body: "Now and then I think of when we were together Like when you said you felt so happy you could die Told myself that you were right for me But felt so lonely in your company But that was...
-
+}}}}
 
 ```
 
