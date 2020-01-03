@@ -1,18 +1,12 @@
-# Project Overview
+# Princeify
 
-## Project Name
-
-Princeify
-
-## Project Description
-
-Princeify allows the user to search for song lyrics and then "Princeifies" them with Prince's characteristic abbreviations such as "U," "👁️," and "2."
+## Princeify allows the user to search for song lyrics and then "Princeifies" them with Prince's characteristic abbreviations such as "U," "👁️," and "2."
 
 ## API and Data Sample
 
 Princeify uses the Musixmatch API to pull up song lyrics (well, at least 30% of them - full lyrics are behind a paywall).
 
-````{
+`````{
 message: {
 header: {
 status_code: 200,
@@ -22,7 +16,7 @@ body: {
 lyrics: {
 lyrics_id: 19610684,
 explicit: 0,
-lyrics_body: "Now and then I think of when we were together Like when you said you felt so happy you could die Told myself that you were right for me But felt so lonely in your company But that was love, and it's an ache I still remember You can get addicted to a certain kind of sadness Like resignation to the end, always the end So when we found that we could not make sense Well, you said that we would still be friends But I'll admit that I was glad that it was over But you didn't have to cut me off Make out like it never happened and that we were nothing And I don't even need your love But you treat me like a stranger, and that feels so rough No, you didn't have to stoop so low Have your friends, collect your records, and then change your number ... ******* This Lyrics is NOT for Commercial use ******* (1409618871795)", ```
+lyrics_body: "Now and then I think of when we were together Like when you said you felt so happy you could die Told myself that you were right for me But felt so lonely in your company But that was love, and it's an ache I still remember You can get addicted to a certain kind of sadness Like resignation to the end, always the end So when we found that we could not make sense Well, you said that we would still be friends But I'll admit that I was glad that it was over But you didn't have to cut me off Make out like it never happened and that we were nothing And I don't even need your love But you treat me like a stranger, and that feels so rough No, you didn't have to stoop so low Have your friends, collect your records, and then change your number ... ******* This Lyrics is NOT for Commercial use ******* (1409618871795)", ````
 
 ## Wireframes
 
@@ -85,7 +79,7 @@ Time frames are also key in the development cycle.  You have limited time to cod
 
 Use this section to include a brief code snippet of functionality that you are proud of an a brief description
 
-````
+`````
 
 function reverse(string) {
 // here is the code to reverse a string of text
