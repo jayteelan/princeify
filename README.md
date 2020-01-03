@@ -49,7 +49,7 @@ updated_time: "2019-09-01T00:58:00Z"
 
 #### PostMVP
 
-- save/share lyrics
+- save lyrics to localStorage
 - randomly add Princely exclamations to lyrics
 - replace notes, e.g. [CHORUS] becomes [NPG]
 - randomize backing band
