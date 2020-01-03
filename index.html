@@ -13,41 +13,46 @@
   </head>
   <body>
     <div class="app">
-      <img src="http://placekitten.com/300/200" alt="Princeify" />
-      <div class="search">
+      <div class="hed">
+        <img src="http://placekitten.com/300/200" alt="Princeify" />
+        <div class="search">
+          <form>
+            <p>
+              2 search 4 a song, 👁️ need U 2 give me its
+              <input type="text" name="title" id="title" placeholder="title" />
+              and the
+              <input
+                type="text"
+                name="artist"
+                id="artist"
+                placeholder="original artist"
+              />
+            </p>
+            <button type="submit">make it sexy, MF</button>
+          </form>
+        </div>
+      </div>
+      <div class="about">
         <p>
-          2 search 4 a song, 👁️ need U 2 give me its
-          <input type="text" name="title" id="title" placeholder="title" />
-          and the
-          <input
-            type="text"
-            name="artist"
-            id="artist"
-            placeholder="original artist"
-          />.
+          <span class="princeify">Princeify</span> lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Iure dolor placeat porro sint
+          consequatur fugit quibusdam tempore, deserunt, ullam amet labore?
+          Corporis, est. Nulla, autem ratione eos totam vitae repudiandae?
         </p>
       </div>
-      <button type="submit">make it sexy, MF</button>
+      <div class="search-results hidden">
+        <h3>Did U mean...?</h3>
+        <ul class="results-list">
+          <!-- appendChild li>a -->
+        </ul>
+      </div>
+      <div class="lyrics-div hidden">
+        <h3 class="res-song"></h3>
+        <h5 class="res-artist"></h5>
+        <p class="res-lyrics"></p>
+      </div>
     </div>
-    <div class="about">
-      <p>
-        <span class="princeify">Princeify</span> lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Iure dolor placeat porro sint consequatur
-        fugit quibusdam tempore, deserunt, ullam amet labore? Corporis, est.
-        Nulla, autem ratione eos totam vitae repudiandae?
-      </p>
-    </div>
-    <div class="search-results hidden">
-      <h3>Did U mean...?</h3>
-      <ul class="results-list">
-        <!-- appendChild li>a -->
-      </ul>
-    </div>
-    <div class="lyrics-div hidden">
-      <h3 class="result-song"></h3>
-      <h5 class="result-artist"></h5>
-      <p class="result-lyrics"></p>
-    </div>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/main.js"></script>
   </body>

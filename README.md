@@ -73,8 +73,8 @@ updated_time: "2019-09-01T00:58:00Z"
 
 | Component        | Priority | Estimated Time | Time Invested | Actual Time |
 | ---------------- | :------: | :------------: | :-----------: | :---------: |
-| skeleton/API get |    H     |      3hrs      |               |             |
-| search           |    H     |      3hrs      |               |             |
+| skeleton/API get |    H     |      3hrs      |     2hrs      |             |
+| search/axios     |    H     |      3hrs      |     5hrs      |             |
 | mutations        |    H     |    8-10hrs     |               |             |
 | DOM render       |    H     |      3hrs      |               |             |
 | styling          |    M     |     8 hrs      |               |             |
@@ -95,4 +95,8 @@ function reverse(string) {
 
 ## Change Log
 
-Use this section to document what changes were made and the reasoning behind those changes.
+**3. Jan, 2020**
+
+- initial skeleton HTML
+- API data retrieval/search partially complete
+- found ~40 text mutations to be coded

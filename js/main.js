@@ -1,11 +1,40 @@
 /* --------- API VARIABLES --------- */
-const searchSong = `https://api.musixmatch.com/ws/1.1/track.search?q_track=${titleParsed}&q_artist=${artistParsed}&page_size=5&apikey=${apiKey}`;
-const getLyrics = `https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${trackID}&apikey=${apiKey}`;
 const apiKey = "dc5c9b28a701d08bdfc60ec825c88602";
+const apiURL = "https://api.musixmatch.com/ws/1.1/";
+// const searchSong = (title, artist) =>
+//   `https://api.musixmatch.com/ws/1.1/track.search?q_track=${title}&q_artist=${artist}&page_size=10&apikey=${apiKey}`;
+// const getLyrics = ID =>
+//   `https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${ID}`;
 
-/* --------- QUERYSELECTORS --------- */
-const inputTitle = document.querySelector("#title");
-const inputArtist = document.querySelector("#artist");
+/* --------- QUERYSELECTORS--------- */
+
+// const inputTitle = document.querySelector("#title").value;
+// const inputArtist = document.querySelector("#artist").value;
+function getFormData(e) {
+  e.preventDefault();
+  let inputTitle = document.querySelector("#title").value;
+  let inputArtist = document.querySelector("#artist").value;
+  inputTitle = inputTitle.replace(" ", "+");
+  inputArtist = inputArtist.replace(" ", "+");
+  // console.log(inputTitle);
+  // console.log(inputArtist);
+  const getData = async () => {
+    // e.preventDefault();
+    try {
+      const data = await axios.get(
+        `${apiURL}track.search?q_track=${inputTitle}&q_artist=${inputArtist}&page_size=10&apikey=${apiKey}`
+      );
+      console.log(data);
+    } catch {
+      console.error("oops");
+    }
+  };
+  getData();
+}
+
+const form = document.querySelector("form");
+form.addEventListener("submit", getFormData);
+const submit = document.querySelector("button");
 
 const about = document.querySelector(".about");
 
@@ -17,13 +46,23 @@ const resSong = document.querySelector(".res-song");
 const resArtist = document.querySelector(".res-artist");
 const resLyrics = document.querySelector(".res-lyrics");
 
-/* --------- PARSE INPUT FOR SEARCH ---------*/
-const parseString = input => {
-  const words = input.value.split(" ");
-  return words.reduce((a, b) => {
-    `${a}+${b}`;
-  });
-};
+/* -------- SEARCH -------- */
+// inputTitle.addEventListener("textinput", event => { applyEvent(event);}, false);
+
+// let titleParsed = `${inputTitle.value}`;
+// console.log(titleParsed);
+// let artistParsed = parseString(inputArtist.value);
+
+// let song = `${searchSong(titleParsed, artistParsed)}${apiKey}`;
+
+// const getSong = async () => {
+//   const res = await axios.get(song);
+//   try {
+//     console.log(res);
+//   } catch {
+//     console.log("oops.");
+//   }
+// };
 
 /*  --------- HOW PRINCE WRITES ---------
 // with thanks to PrinceVault.com
