@@ -1,4 +1,33 @@
-/*
+/* --------- API VARIABLES --------- */
+const searchSong = `https://api.musixmatch.com/ws/1.1/track.search?q_track=${titleParsed}&q_artist=${artistParsed}&page_size=5&apikey=${apiKey}`;
+const getLyrics = `https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${trackID}&apikey=${apiKey}`;
+const apiKey = "dc5c9b28a701d08bdfc60ec825c88602";
+
+/* --------- QUERYSELECTORS --------- */
+const inputTitle = document.querySelector("#title");
+const inputArtist = document.querySelector("#artist");
+
+const about = document.querySelector(".about");
+
+const searchResults = document.querySelector(".search-results");
+const resultsList = document.querySelector(".results-list");
+
+const lyricsDiv = document.querySelector(".lyrics-div");
+const resSong = document.querySelector(".res-song");
+const resArtist = document.querySelector(".res-artist");
+const resLyrics = document.querySelector(".res-lyrics");
+
+/* --------- PARSE INPUT FOR SEARCH ---------*/
+const parseString = input => {
+  const words = input.value.split(" ");
+  return words.reduce((a, b) => {
+    `${a}+${b}`;
+  });
+};
+
+/*  --------- HOW PRINCE WRITES ---------
+// with thanks to PrinceVault.com
+
 I > 👁️
 of > "☮️"
 heart > ♥

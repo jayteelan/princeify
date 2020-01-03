@@ -9,14 +9,14 @@
       href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <title>Document</title>
+    <title>Princeify</title>
   </head>
   <body>
     <div class="app">
       <img src="http://placekitten.com/300/200" alt="Princeify" />
       <div class="search">
         <p>
-          2 search 4 a song, 👁️ need 2 give me its
+          2 search 4 a song, 👁️ need U 2 give me its
           <input type="text" name="title" id="title" placeholder="title" />
           and the
           <input
@@ -38,16 +38,17 @@
       </p>
     </div>
     <div class="search-results hidden">
-      <h3>Did U mean...</h3>
-      <ul class="search-songs">
+      <h3>Did U mean...?</h3>
+      <ul class="results-list">
         <!-- appendChild li>a -->
       </ul>
     </div>
-    <div class="results hidden">
+    <div class="lyrics-div hidden">
       <h3 class="result-song"></h3>
       <h5 class="result-artist"></h5>
       <p class="result-lyrics"></p>
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
