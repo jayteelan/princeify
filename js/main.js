@@ -1,28 +1,26 @@
-/* --------- MUSIXMATCH API --------- */
+/* ----- MUSIXMATCH API ----- */
 const apiKey = "dc5c9b28a701d08bdfc60ec825c88602";
 const apiURL = "https://api.musixmatch.com/ws/1.1/";
 
-/* --------- GET LYRICS --------- */
-
+/* ----- GET LYRICS ----- */
 let resLyrics = "";
+
 function getFormData(e) {
   e.preventDefault();
   let inputTitle = document.querySelector("#title").value;
   let inputArtist = document.querySelector("#artist").value;
   inputTitle = inputTitle.replace(" ", "+");
   inputArtist = inputArtist.replace(" ", "+");
-  // console.log(inputTitle);
-  // console.log(inputArtist);
   const getData = async () => {
-    // e.preventDefault();
     try {
       const res = await axios.get(
         `${apiURL}matcher.lyrics.get?q_track=${inputTitle}&q_artist=${inputArtist}&apikey=${apiKey}`
       );
+      console.log(res);
       let lyricsFound = res.data.message.body.lyrics.lyrics_body;
       let lyricsCopyright = res.data.message.body.lyrics.lyrics_copyright;
       resLyrics = `${lyricsFound}\n\n${lyricsCopyright}`;
-      console.log(resLyrics);
+      // console.log(resLyrics);
     } catch {
       console.error("something went wrong");
     }
@@ -32,26 +30,65 @@ function getFormData(e) {
 
 const form = document.querySelector("form");
 form.addEventListener("submit", getFormData);
-// const submit = document.querySelector("button");
-/*
-const about = document.querySelector(".about");
 
-const searchResults = document.querySelector(".search-results");
-const resultsList = document.querySelector(".results-list");
+/* ----- MUTATE LYRICS ----- */
 
-const lyricsDiv = document.querySelector(".lyrics-div");
-const resSong = document.querySelector(".res-song");
-const resArtist = document.querySelector(".res-artist");
-const resLyrics = document.querySelector(".res-lyrics");
+const pifyLyrics = ""; // create an empty string for Princeified lyrics
+
+const pifyBasic = {
+  // Object.keys = original words; Object.values = Princified substitutions
+  I: "👁️",
+  you: "U",
+  are: "R",
+  to: "2",
+  too: "2",
+  for: "4",
+  be: "B",
+  know: "no"
+};
+
+const pifyIt = lyrics => {
+  // iterate over original lyrics, replacing each instance of a keyword with its Princeified value
+  // with help from W3Schools (https://w3schools.com/jsref/jsref_replace.asp)
+  for (i = 0; i < pifyBasic.length; ++i) {
+    if (lyrics.includes(Object.keys(pifyBasic)[i])) {
+      lyrics.replace(
+        / Object.keys(pifyBasic)[i] /gi,
+        ` ${Object.values(pifyBasic)[i]} `
+      );
+    }
+  }
+};
+
+// wait for getFormData to populate resLyrics, try{pifyIt(resLyrics)}
+
+/* ----- APPEND TO DOM ----- */
+
+// qs".res-song" = pifyIt(song title)
+// qs .res-artist = `by Prince feat. ${original artist}`
+// qs ".res-lyrics" = pifyLyrics
+// lyrics-div.classList.remove("hidden")
+
+/* ----- WRONG SONG ----- */
+
+// .wrongSong.addEventListener("click", // reveal seach results div)
+
+// API fetch track.search q_track, q_title, f_has_lyrics=1, page_size=10
+
+// for loop: createElement li innerhtml = search results[i] classlist=`result${i}`; results-list.appendChild
+
+// results-list.addeventlistener: on link click, fetch selected song lyrics+pifyIt, append to DOM, hide search results div, unhide lyrics div
+
+//hide lyrics div, unhide search results div
 
 /*  --------- HOW PRINCE WRITES ---------
 // with thanks to PrinceVault.com
 
-I > 👁️
+I > 👁️ //
 of > "☮️"
 heart > ♥
 money > $
-you > U
+you > U //
 ya > U
 you're > U're
 you'll > U'll
@@ -60,18 +97,18 @@ see > C
 are > R
 aren't > R'nt
 why > Y
-to > 2
-too > 2
+to > 2 //
+too > 2 //
 tonight > 2 night
 tomorrow > 2morrow
-for > 4
+for > 4 //
 fore > 4
-be > B
+be > B //
 bee > B
 before > B4
 into > in2
 unto > un2
-know > no
+know > no //
 with > wit
 ex* > X* (e.g., Xpectation)
 pussy > P.
