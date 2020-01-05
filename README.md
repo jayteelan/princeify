@@ -58,8 +58,8 @@ updated_time: "2019-09-01T00:58:00Z"
 
 | Day     | Deliverable                                 | Status     |
 | ------- | ------------------------------------------- | ---------- |
-| Jan 3   | proposal, basic HTML, API fetch, search bar | Incomplete |
-| Jan 4/5 | song lyric mutatation pseudocode            | Incomplete |
+| Jan 3   | proposal, basic HTML, API fetch, search bar | Complete   |
+| Jan 4/5 | song lyric mutatation pseudocode            | Complete   |
 | Jan 6   | lyric mutation JS                           | Incomplete |
 | Jan 7   | postMVP                                     | Incomplete |
 | Jan 8   | styling                                     | Incomplete |
@@ -74,8 +74,8 @@ updated_time: "2019-09-01T00:58:00Z"
 | Component        | Priority | Estimated Time | Time Invested | Actual Time |
 | ---------------- | :------: | :------------: | :-----------: | :---------: |
 | skeleton/API get |    H     |      3hrs      |     2hrs      |             |
-| search/axios     |    H     |      3hrs      |     5hrs      |             |
-| mutations        |    H     |    8-10hrs     |               |             |
+| search/axios     |    H     |      3hrs      |     6hrs      |             |
+| mutations        |    H     |    8-10hrs     |      1hr      |             |
 | DOM render       |    H     |      3hrs      |               |             |
 | styling          |    M     |     8 hrs      |               |             |
 | Total            |    H     |    25-27hrs    |               |             |
@@ -94,6 +94,12 @@ function reverse(string) {
 ```
 
 ## Change Log
+
+**5. Jan, 2020**
+
+- completed lyric retrieval; logs to console
+- pseudocoded remaining app logic
+- began text mutation JS
 
 **3. Jan, 2020**
 
