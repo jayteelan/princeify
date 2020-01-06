@@ -60,7 +60,7 @@ updated_time: "2019-09-01T00:58:00Z"
 | ------- | ------------------------------------------- | ---------- |
 | Jan 3   | proposal, basic HTML, API fetch, search bar | Complete   |
 | Jan 4/5 | song lyric mutatation pseudocode            | Complete   |
-| Jan 6   | lyric mutation JS                           | Incomplete |
+| Jan 6   | lyric mutation JS                           | Complete   |
 | Jan 7   | postMVP                                     | Incomplete |
 | Jan 8   | styling                                     | Incomplete |
 | Jan 9   | present                                     | Incomplete |
@@ -75,8 +75,8 @@ updated_time: "2019-09-01T00:58:00Z"
 | ---------------- | :------: | :------------: | :-----------: | :---------: |
 | skeleton/API get |    H     |      3hrs      |     2hrs      |             |
 | search/axios     |    H     |      3hrs      |     6hrs      |             |
-| mutations        |    H     |    8-10hrs     |      1hr      |             |
-| DOM render       |    H     |      3hrs      |               |             |
+| mutations        |    H     |    8-10hrs     |     9hrs      |             |
+| DOM render       |    H     |      3hrs      |    0.5hrs     |             |
 | styling          |    M     |     8 hrs      |               |             |
 | Total            |    H     |    25-27hrs    |               |             |
 
@@ -94,6 +94,12 @@ function reverse(string) {
 ```
 
 ## Change Log
+
+**6. Jan, 2020**
+
+- lyric mutation logic completed
+- added API calls for track title and artist name
+- render results to DOM
 
 **5. Jan, 2020**
 

@@ -26,15 +26,15 @@ const pifyBasic = {
 };
 
 /* ----- GET LYRICS ----- */
-let resLyrics = "";
+let mxmLyrics = "";
 let lines = [];
 let linesMutate = [];
 let pifyLyrics = "";
-
-// const musixmatch=
+let renderArtist = "";
+let renderTitle = "";
 
 function getFormData(e) {
-  // e.preventDefault();
+  e.preventDefault();
   let inputTitle = document.querySelector("#title").value;
   let inputArtist = document.querySelector("#artist").value;
   inputTitle = inputTitle.replace(" ", "+");
@@ -44,12 +44,23 @@ function getFormData(e) {
       const res = await axios.get(
         `${apiURL}matcher.lyrics.get?q_track=${inputTitle}&q_artist=${inputArtist}&apikey=${apiKey}`
       );
-      // console.log("result", res);
-      let lyricsFound = res.data.message.body.lyrics.lyrics_body;
-      let lyricsCopyright = res.data.message.body.lyrics.lyrics_copyright;
-      resLyrics = `${lyricsFound}\n\n${lyricsCopyright}`;
+      const resTitle = await axios.get(
+        `${apiURL}track.search?q_track=${inputTitle}&q_artist=${inputArtist}&page_size=1&apikey=${apiKey}`
+      );
+      renderTitle = resTitle.data.message.body.track_list[0].track.track_name;
+      console.log("resTitle", renderTitle);
+      const resArtist = await axios.get(
+        `${apiURL}artist.search?q_artist=${inputArtist}&page_size=1&apikey=${apiKey}`
+      );
+      renderArtist =
+        resArtist.data.message.body.artist_list[0].artist.artist_name;
+      console.log("resArtist", renderArtist);
+      const mxmLyrObj = res.data.message.body.lyrics;
+      let lyricsFound = mxmLyrObj.lyrics_body;
+      let lyricsCopyright = mxmLyrObj.lyrics_copyright;
+      mxmLyrics = `${lyricsFound}\n\n${lyricsCopyright}`;
       // split lyrics
-      lines = resLyrics.split("\n");
+      lines = mxmLyrics.split("\n");
       console.log("lines", lines);
       // mutate
       /* referred to
@@ -72,12 +83,17 @@ function getFormData(e) {
       };
       mutateLine(lines);
       // console.log(pifyLines);
-      pifyLyrics = pifyLines.reduce((a, b) => `${a}\n${b}`);
+      pifyLyrics = pifyLines.reduce((a, b) => `${a}<br>${b}`);
       console.log(pifyLyrics);
       // append lyrics to DOM
+      const divSong = document.querySelector(".div-song");
+      const divArtist = document.querySelector(".div-artist");
       const divLyrics = document.querySelector(".div-lyrics");
+      divSong.innerHTML = renderTitle;
+      divArtist.innerHTML = `by Prince feat. ${renderArtist}`;
       divLyrics.innerHTML = pifyLyrics;
     } catch {
+      document.querySelector(".error").innerHTML = "👁️ couldn't find Ur song";
       console.error("something went wrong");
     }
   };
@@ -86,52 +102,6 @@ function getFormData(e) {
 
 const form = document.querySelector("form");
 form.addEventListener("submit", getFormData);
-
-/* ----- APPEND LYRICS TO DOM ----- */
-
-// /* ----- SPLIT LYRICS BY LINE ----- */
-// const getLines = lyrics => {
-//   getFormData();
-//   lyrics.split("\n");
-//   console.log("lines", lines);
-// };
-
-/* ----- MUTATE LYRICS ----- */
-
-/*
-const pifyIt = lyrics => {
-  // iterate over original lyrics, replacing each instance of a keyword with its Princeified value
-  // with help from W3Schools (https://w3schools.com/jsref/jsref_replace.asp)
-  for (i = 0; i < pifyBasic.length; ++i) {
-    if (lyrics.includes(Object.keys(pifyBasic)[i])) {
-      lyrics.replace(
-        / Object.keys(pifyBasic)[i] /gi,
-        ` ${Object.values(pifyBasic)[i]} `
-      );
-    }
-  }
-};
-
-// wait for getFormData to populate resLyrics, try{pifyIt(resLyrics)}
-
-/* ----- APPEND TO DOM ----- */
-
-// qs".res-song" = pifyIt(song title)
-// qs .res-artist = `by Prince feat. ${original artist}`
-// qs ".res-lyrics" = pifyLyrics
-// lyrics-div.classList.remove("hidden")
-
-/* ----- WRONG SONG ----- */
-
-// .wrongSong.addEventListener("click", // reveal seach results div)
-
-// API fetch track.search q_track, q_title, f_has_lyrics=1, page_size=10
-
-// for loop: createElement li innerhtml = search results[i] classlist=`result${i}`; results-list.appendChild
-
-// results-list.addeventlistener: on link click, fetch selected song lyrics+pifyIt, append to DOM, hide search results div, unhide lyrics div
-
-//hide lyrics div, unhide search results div
 
 /*  --------- HOW PRINCE WRITES ---------
 // with thanks to PrinceVault.com
