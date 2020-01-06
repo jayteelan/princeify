@@ -32,20 +32,36 @@ function getFormData(e) {
       const res = await axios.get(
         `${apiURL}matcher.lyrics.get?q_track=${inputTitle}&q_artist=${inputArtist}&apikey=${apiKey}`
       );
-      console.log("result", res);
+      // console.log("result", res);
       let lyricsFound = res.data.message.body.lyrics.lyrics_body;
       let lyricsCopyright = res.data.message.body.lyrics.lyrics_copyright;
       resLyrics = `${lyricsFound}\n\n${lyricsCopyright}`;
       // split lyrics
       lines = resLyrics.split("\n");
-      console.log("lines", lines);
+      // console.log("lines", lines);
       // mutate
-      lines.forEach = line => {
-        const mutate = line.replace(/you/gi, "U");
-        console.log(mutate);
-        // linesMutate.push(mutate);
+      /* referred to
+  (https://stackoverflow.com/questions/15604140/replace-multiple-strings-with-multiple-other-strings)
+  for multiple strings and
+  (https://stackoverflow.com/questions/4921701/javascript-regex-for-replace-words-inside-text-and-not-part-of-the-words)
+  for word boundaries */
+      const pifyLines = [];
+      const mutateLine = lyrics => {
+        for (jkl = 0; jkl < lyrics.length; ++jkl) {
+          const mutate = lyrics[jkl].replace(
+            /\bI\b|\byou\b|\bare\b|\bto\b|\btoo\b|\bfor\b|\bbe\b|\bknow\b/gi,
+            matched => {
+              return pifyBasic[matched];
+            }
+          );
+          pifyLines.push(mutate);
+          // console.log("mutate", mutate);
+        }
       };
-      console.log("mutate", linesMutate);
+      mutateLine(lines);
+      // console.log(pifyLines);
+      let pifyLyrics = pifyLines.reduce((a, b) => `${a}\n${b}`);
+      console.log(pifyLyrics);
     } catch {
       console.error("something went wrong");
     }
