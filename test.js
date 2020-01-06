@@ -62,7 +62,7 @@ const mapObj = {
 
 const mutateLine = lyrics => {
   /* referred to
-  (https://stackoverflow.com/questions/15604140/replace-multiple-strings-with-multiple-other-strings)
+  (https://stackoverflow.com/questions/15604140replace-multiple-strings-with-multiple-other-strings)
   for multiple strings and
   (https://stackoverflow.com/questions/4921701/javascript-regex-for-replace-words-inside-text-and-not-part-of-the-words)
   for word boundaries */

@@ -5,24 +5,36 @@ const apiURL = "https://api.musixmatch.com/ws/1.1/";
 /* ----- REPLACEMENTS ----- */
 const pifyBasic = {
   // Object.keys = original words; Object.values = Princified substitutions
-  I: "👁️",
+  i: "👁️",
   you: "U",
+  your: "Ur",
   are: "R",
   to: "2",
   too: "2",
   for: "4",
   be: "B",
-  know: "no"
+  know: "no",
+  I: "👁️",
+  You: "U",
+  Your: "Ur",
+  Are: "R",
+  To: "2",
+  Too: "2",
+  For: "4",
+  Be: "B",
+  Know: "No"
 };
 
 /* ----- GET LYRICS ----- */
 let resLyrics = "";
 let lines = [];
 let linesMutate = [];
-let mutateLyrics = "";
+let pifyLyrics = "";
+
+// const musixmatch=
 
 function getFormData(e) {
-  e.preventDefault();
+  // e.preventDefault();
   let inputTitle = document.querySelector("#title").value;
   let inputArtist = document.querySelector("#artist").value;
   inputTitle = inputTitle.replace(" ", "+");
@@ -38,7 +50,7 @@ function getFormData(e) {
       resLyrics = `${lyricsFound}\n\n${lyricsCopyright}`;
       // split lyrics
       lines = resLyrics.split("\n");
-      // console.log("lines", lines);
+      console.log("lines", lines);
       // mutate
       /* referred to
   (https://stackoverflow.com/questions/15604140/replace-multiple-strings-with-multiple-other-strings)
@@ -49,7 +61,7 @@ function getFormData(e) {
       const mutateLine = lyrics => {
         for (jkl = 0; jkl < lyrics.length; ++jkl) {
           const mutate = lyrics[jkl].replace(
-            /\bI\b|\byou\b|\bare\b|\bto\b|\btoo\b|\bfor\b|\bbe\b|\bknow\b/gi,
+            /\bi\b|\byou\b|\byour\b|\bare\b|\bto\b|\btoo\b|\bfor\b|\bbe\b|\bknow\b|\bI\b|\bYou\b|\bYour\b|\bAre\b|\bTo\b|\bToo\b|\bFor\b|\bBe\b|\bKnow\b/gi,
             matched => {
               return pifyBasic[matched];
             }
@@ -60,8 +72,11 @@ function getFormData(e) {
       };
       mutateLine(lines);
       // console.log(pifyLines);
-      let pifyLyrics = pifyLines.reduce((a, b) => `${a}\n${b}`);
+      pifyLyrics = pifyLines.reduce((a, b) => `${a}\n${b}`);
       console.log(pifyLyrics);
+      // append lyrics to DOM
+      const divLyrics = document.querySelector(".div-lyrics");
+      divLyrics.innerHTML = pifyLyrics;
     } catch {
       console.error("something went wrong");
     }
@@ -72,11 +87,16 @@ function getFormData(e) {
 const form = document.querySelector("form");
 form.addEventListener("submit", getFormData);
 
-/* ----- SPLIT LYRICS BY LINE ----- */
+/* ----- APPEND LYRICS TO DOM ----- */
+
+// /* ----- SPLIT LYRICS BY LINE ----- */
+// const getLines = lyrics => {
+//   getFormData();
+//   lyrics.split("\n");
+//   console.log("lines", lines);
+// };
 
 /* ----- MUTATE LYRICS ----- */
-
-const pifyLyrics = ""; // create an empty string for Princeified lyrics
 
 /*
 const pifyIt = lyrics => {
