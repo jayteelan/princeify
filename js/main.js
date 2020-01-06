@@ -2,39 +2,7 @@
 const apiKey = "dc5c9b28a701d08bdfc60ec825c88602";
 const apiURL = "https://api.musixmatch.com/ws/1.1/";
 
-/* ----- GET LYRICS ----- */
-let resLyrics = "";
-
-function getFormData(e) {
-  e.preventDefault();
-  let inputTitle = document.querySelector("#title").value;
-  let inputArtist = document.querySelector("#artist").value;
-  inputTitle = inputTitle.replace(" ", "+");
-  inputArtist = inputArtist.replace(" ", "+");
-  const getData = async () => {
-    try {
-      const res = await axios.get(
-        `${apiURL}matcher.lyrics.get?q_track=${inputTitle}&q_artist=${inputArtist}&apikey=${apiKey}`
-      );
-      console.log(res);
-      let lyricsFound = res.data.message.body.lyrics.lyrics_body;
-      let lyricsCopyright = res.data.message.body.lyrics.lyrics_copyright;
-      resLyrics = `${lyricsFound}\n\n${lyricsCopyright}`;
-      // console.log(resLyrics);
-    } catch {
-      console.error("something went wrong");
-    }
-  };
-  getData();
-}
-
-const form = document.querySelector("form");
-form.addEventListener("submit", getFormData);
-
-/* ----- MUTATE LYRICS ----- */
-
-const pifyLyrics = ""; // create an empty string for Princeified lyrics
-
+/* ----- REPLACEMENTS ----- */
 const pifyBasic = {
   // Object.keys = original words; Object.values = Princified substitutions
   I: "👁️",
@@ -47,6 +15,54 @@ const pifyBasic = {
   know: "no"
 };
 
+/* ----- GET LYRICS ----- */
+let resLyrics = "";
+let lines = [];
+let linesMutate = [];
+let mutateLyrics = "";
+
+function getFormData(e) {
+  e.preventDefault();
+  let inputTitle = document.querySelector("#title").value;
+  let inputArtist = document.querySelector("#artist").value;
+  inputTitle = inputTitle.replace(" ", "+");
+  inputArtist = inputArtist.replace(" ", "+");
+  const getData = async () => {
+    try {
+      const res = await axios.get(
+        `${apiURL}matcher.lyrics.get?q_track=${inputTitle}&q_artist=${inputArtist}&apikey=${apiKey}`
+      );
+      console.log("result", res);
+      let lyricsFound = res.data.message.body.lyrics.lyrics_body;
+      let lyricsCopyright = res.data.message.body.lyrics.lyrics_copyright;
+      resLyrics = `${lyricsFound}\n\n${lyricsCopyright}`;
+      // split lyrics
+      lines = resLyrics.split("\n");
+      console.log("lines", lines);
+      // mutate
+      lines.forEach = line => {
+        const mutate = line.replace(/you/gi, "U");
+        console.log(mutate);
+        // linesMutate.push(mutate);
+      };
+      console.log("mutate", linesMutate);
+    } catch {
+      console.error("something went wrong");
+    }
+  };
+  getData();
+}
+
+const form = document.querySelector("form");
+form.addEventListener("submit", getFormData);
+
+/* ----- SPLIT LYRICS BY LINE ----- */
+
+/* ----- MUTATE LYRICS ----- */
+
+const pifyLyrics = ""; // create an empty string for Princeified lyrics
+
+/*
 const pifyIt = lyrics => {
   // iterate over original lyrics, replacing each instance of a keyword with its Princeified value
   // with help from W3Schools (https://w3schools.com/jsref/jsref_replace.asp)
