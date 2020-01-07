@@ -71,14 +71,14 @@ updated_time: "2019-09-01T00:58:00Z"
 
 ## Timeframes
 
-| Component        | Priority | Estimated Time | Time Invested | Actual Time |
-| ---------------- | :------: | :------------: | :-----------: | :---------: |
-| skeleton/API get |    H     |      3hrs      |     2hrs      |             |
-| search/axios     |    H     |      3hrs      |     6hrs      |             |
-| mutations        |    H     |    8-10hrs     |     9hrs      |             |
-| DOM render       |    H     |      3hrs      |    0.5hrs     |             |
-| styling          |    M     |     8 hrs      |               |             |
-| Total            |    H     |    25-27hrs    |               |             |
+| Component        | Priority | Estimated Time |    Time Invested     | Actual Time |
+| ---------------- | :------: | :------------: | :------------------: | :---------: |
+| skeleton/API get |    H     |      3hrs      |         2hrs         |             |
+| search/axios     |    H     |      3hrs      |         6hrs         |             |
+| mutations        |    H     |    8-10hrs     | 9hrs + 5 hrs rewrite |             |
+| DOM render       |    H     |      3hrs      |        0.5hrs        |             |
+| styling          |    M     |     8 hrs      |                      |             |
+| Total            |    H     |    25-27hrs    |                      |             |
 
 ## Code Snippet
 
@@ -86,14 +86,29 @@ Use this section to include a brief code snippet of functionality that you are p
 
 ```
 
-function reverse(string) {
-// here is the code to reverse a string of text
-}
+const mutateLine = (lyricsArr, keyObject) => {
+  const RE = new RegExp(
+    `\\b${Object.keys(keyObject).join("\\b|\\b")}\\b`,
+    "gi"
+  );
+  for (jkl = 0; jkl < lyricsArr.length; ++jkl) {
+    const mutate = lyricsArr[jkl].replace(RE, matched => {
+      return keyObject[matched];
+    });
+    pifyLineArr.push(mutate);
+  }
+};
 
 
 ```
 
 ## Change Log
+
+**7. Jan, 2020**
+
+- restructured main.js
+- removed extraneous song title info
+- streamlined RegExp
 
 **6. Jan, 2020**
 

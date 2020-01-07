@@ -30,7 +30,7 @@ let renderTitle = "";
 let renderLyrics = "";
 
 let origLineStr = "";
-let origLineArr = [];
+const origLineArr = [];
 const pifyLineArr = [];
 
 /* ----- GET FORM DATA ----- */

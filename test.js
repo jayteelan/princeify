@@ -1,12 +1,14 @@
 /* ----- DOM RENDER --- */
-// querySelectors
-const divSong = document.querySelector(".div-song");
-const divArtist = document.querySelector(".div-artist");
-const divLyrics = document.querySelector(".div-lyrics");
-// render to DOM
-divSong.innerHTML = renderTitle;
-divArtist.innerHTML = `by Prince feat. ${renderArtist}`;
-divLyrics.innerHTML = renderLyrics;
+const renderDOM = () => {
+  // querySelectors
+  const divSong = document.querySelector(".div-song");
+  const divArtist = document.querySelector(".div-artist");
+  const divLyrics = document.querySelector(".div-lyrics");
+  // render to DOM
+  divSong.innerHTML = renderTitle;
+  divArtist.innerHTML = `by Prince feat. ${renderArtist}`;
+  divLyrics.innerHTML = renderLyrics;
+};
 
 /* ----- REDUCE pifyLineArr ----- */
 // reduce function
