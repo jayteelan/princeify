@@ -73,10 +73,10 @@ updated_time: "2019-09-01T00:58:00Z"
 
 | Component        | Priority | Estimated Time |    Time Invested     | Actual Time |
 | ---------------- | :------: | :------------: | :------------------: | :---------: |
-| skeleton/API get |    H     |      3hrs      |         2hrs         |             |
-| search/axios     |    H     |      3hrs      |         6hrs         |             |
-| mutations        |    H     |    8-10hrs     | 9hrs + 5 hrs rewrite |             |
-| DOM render       |    H     |      3hrs      |        0.5hrs        |             |
+| skeleton/API get |    H     |      3hrs      |         2hrs         |    2hrs     |
+| search/axios     |    H     |      3hrs      |         6hrs         |    6hrs     |
+| mutations        |    H     |    8-10hrs     | 9hrs + 6 hrs rewrite |    15hrs    |
+| DOM render       |    H     |      3hrs      |        0.5hrs        |   0.5hrs    |
 | styling          |    M     |     8 hrs      |                      |             |
 | Total            |    H     |    25-27hrs    |                      |             |
 
@@ -109,6 +109,7 @@ const mutateLine = (lyricsArr, keyObject) => {
 - restructured main.js
 - removed extraneous song title info
 - streamlined RegExp
+- increased number of strings and broke out object to another file
 
 **6. Jan, 2020**
 

@@ -119,7 +119,7 @@ function getFormData(e) {
       renderDOM();
     } catch {
       // remove this error message at next search
-      document.querySelector(".error").innerHTML = "👁️ couldn't find Ur song";
+      divTitle.innerHTML = "👁️ couldn't find Ur song";
       console.error("something went wrong");
     }
   };
