@@ -36,7 +36,7 @@ const mutateLine = (lyricsArr, keyObject) => {
 mutateLine(origLineArr, pifyBasic);
 
 /* ----- SPLIT origLineStr TO origLineArr ----- */
-const origLineArr = origLineStr.splig("\n");
+const origLineArr = origLineStr.split("\n");
 
 /* ----- CREATE origLineStr VARIABLE ----- */
 // shorthand for Musixmatch lyrics object, lyrics text, and copyright notice
@@ -59,9 +59,10 @@ let mxmTitle = resTitle.data.message.body.track_list[0].track.track_name;
 
 /* ----- TRANSFORM mxmTitle ----- */
 const removeExtraNames = originalTitle => {
-  // add transforms to remove anything in () or []
+  // via (https://stackoverflow.com/questions/4292468/javascript-regex-remove-text-between-parentheses)
+  return originalTitle.replace(/ *\([^)]*\) *| *\[[^)]*\] */g, "");
 };
-let renderTitle = removeExtraNames(mxmTitle);
+renderTitle = removeExtraNames(mxmTitle);
 
 /* ----- GET ARTIST NAME ----- */
 const resArtist = await axios.get(
