@@ -1,80 +1,48 @@
-// // const replaceIt = line => {
-// // if (line.includes("You")) {
-// const replaceIt = line => {
-//   // if (line.includes("you")) {
-//   return line.replace(/you/gi, "U");
-//   // } else {
-//   // return line;
-//   // }
-// };
-// console.log(replaceIt("i love you"));
-// console.log(replaceIt("i love salmon"));
-// console.log(replaceIt("I love the bayou"));
+/* ----- DOM RENDER --- */
+// querySelectors
+const divSong = document.querySelector(".div-song");
+const divArtist = document.querySelector(".div-artist");
+const divLyrics = document.querySelector(".div-lyrics");
+// render to DOM
+divSong.innerHTML = renderTitle;
+divArtist.innerHTML = `by Prince feat. ${renderArtist}`;
+divLyrics.innerHTML = renderLyrics;
 
-const lines = [
-  "You're so gorgeous",
-  "I'll do anything",
-  "I'll kiss you from your feet",
-  "To where your head begins",
-  "",
-  "You're so perfect",
-  "You're so right as rain",
-  "You make me, make me, make me",
-  "Make me hungry again",
-  "",
-  "Everything you do is irresistible",
-  "Everything you do is simply kissable",
-  "Why can't I be you? Why can't I be you?",
-  "",
-  "...",
-  "",
-  "******* This Lyrics is NOT for Commercial use *******",
-  "(1409618871795)",
-  ""
-];
-// console.log(lines);
-// const printLine = lyrics => {
-//   for (i = 0; i < lyrics.length; ++i) {
-//     console.log(lyrics[i]);
-//   }
-// };
-// printLine(lines);
-
-// const mutateLine = lyrics => {
-//   for (i = 0; i < lyrics.length; ++i) {
-//     const mutate = lyrics[i].replace(/you/gi, "U");
-//     console.log(mutate);
-//   }
-// };
-// mutateLine(lines);
-
-const mapObj = {
-  // Object.keys = original words; Object.values = Princified substitutions
-  I: "👁️ ",
-  you: "U",
-  are: "R",
-  to: "2",
-  too: "2",
-  for: "4",
-  be: "B",
-  know: "no"
+/* ----- REDUCE pifyLineArr ----- */
+let renderLyrics = pifyLineArr.reduce((a, b) => `${a}<br>${b}`);
+// genericized
+const lyricReduce = arr => {
+  arr.reduce((a, b) => `${a}<br>${b}`);
 };
+renderLyrics = lyricReduce(pifyLineArr);
+
+/* ----- MUTATE origLineArr TO pifyLineArr ----- */
+const pifyLineArr = [];
 
 const mutateLine = lyrics => {
-  /* referred to
-  (https://stackoverflow.com/questions/15604140replace-multiple-strings-with-multiple-other-strings)
-  for multiple strings and
-  (https://stackoverflow.com/questions/4921701/javascript-regex-for-replace-words-inside-text-and-not-part-of-the-words)
-  for word boundaries */
   for (jkl = 0; jkl < lyrics.length; ++jkl) {
     const mutate = lyrics[jkl].replace(
-      // /\bYou\b/gi,
-      /\bI\b|\byou\b|\bare\b|\bto\b|\btoo\b|\bfor\b|\bbe\b|\bknow\b/gi,
+      /\bi\b|\byou\b|\byour\b|\bare\b|\bto\b|\btoo\b|\bfor\b|\bbe\b|\bknow\b|\bI\b|\bYou\b|\bYour\b|\bAre\b|\bTo\b|\bToo\b|\bFor\b|\bBe\b|\bKnow\b/gi,
       matched => {
-        return mapObj[matched];
+        return pifyBasic[matched];
       }
     );
-    console.log(mutate);
+    pifyLineArr.push(mutate);
   }
 };
 mutateLine(lines);
+// genericized
+const mutateKeys = selectedRegExp => {
+  const keyArr = [];
+  // format keys for RegExp
+  for (jkl = 0; jkl < selectedRegExp.length; ++jkl) {
+    keyArr.push(`\b${selectedRegExp.keys[jkl]}\b|`);
+  }
+  // concatenate keys
+  const intermediateStr = keyArr.reduce((a, b) => a + b);
+  // remove last pipe [from (https://tecadmin.net/remove-last-character-from-string-in-javascript/)]
+  const innerStr = intermediateStr.substring(0, str.length - 1);
+  return `/${innerStr}/gi`;
+};
+
+const mutateLine = (lyrics, selectedRegExp) => {};

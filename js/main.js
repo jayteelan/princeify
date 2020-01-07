@@ -25,7 +25,7 @@ const pifyBasic = {
   Know: "No"
 };
 
-/* ----- GET LYRICS ----- */
+/* ----- WORKING VARIABLES ----- */
 let mxmLyrics = "";
 let lines = [];
 let linesMutate = [];
@@ -35,26 +35,32 @@ let renderTitle = "";
 
 function getFormData(e) {
   e.preventDefault();
+  /* ----- FORMAT INPUT FOR API ----- */
   let inputTitle = document.querySelector("#title").value;
   let inputArtist = document.querySelector("#artist").value;
   inputTitle = inputTitle.replace(" ", "+");
   inputArtist = inputArtist.replace(" ", "+");
   const getData = async () => {
     try {
+      /* ----- GET LYRICS ----- */
       const res = await axios.get(
         `${apiURL}matcher.lyrics.get?q_track=${inputTitle}&q_artist=${inputArtist}&apikey=${apiKey}`
       );
+      /* ----- GET SONG TITLE ----- */
       const resTitle = await axios.get(
         `${apiURL}track.search?q_track=${inputTitle}&q_artist=${inputArtist}&page_size=1&apikey=${apiKey}`
       );
       renderTitle = resTitle.data.message.body.track_list[0].track.track_name;
+      // add transforms to remove anything in () or []
       console.log("resTitle", renderTitle);
+      /* ----- GET ARTIST NAME ----- */
       const resArtist = await axios.get(
         `${apiURL}artist.search?q_artist=${inputArtist}&page_size=1&apikey=${apiKey}`
       );
       renderArtist =
         resArtist.data.message.body.artist_list[0].artist.artist_name;
       console.log("resArtist", renderArtist);
+      /* ----- LYRICS OBJECT TO VARIABLE ----- */
       const mxmLyrObj = res.data.message.body.lyrics;
       let lyricsFound = mxmLyrObj.lyrics_body;
       let lyricsCopyright = mxmLyrObj.lyrics_copyright;
@@ -70,13 +76,14 @@ function getFormData(e) {
   for word boundaries */
       const pifyLines = [];
       const mutateLine = lyrics => {
+        const RE = new RegExp(
+          `\\b${Object.keys(pifyBasic).join("\\b|\\b")}\\b`,
+          "gi"
+        );
         for (jkl = 0; jkl < lyrics.length; ++jkl) {
-          const mutate = lyrics[jkl].replace(
-            /\bi\b|\byou\b|\byour\b|\bare\b|\bto\b|\btoo\b|\bfor\b|\bbe\b|\bknow\b|\bI\b|\bYou\b|\bYour\b|\bAre\b|\bTo\b|\bToo\b|\bFor\b|\bBe\b|\bKnow\b/gi,
-            matched => {
-              return pifyBasic[matched];
-            }
-          );
+          const mutate = lyrics[jkl].replace(RE, matched => {
+            return pifyBasic[matched];
+          });
           pifyLines.push(mutate);
           // console.log("mutate", mutate);
         }
@@ -93,6 +100,7 @@ function getFormData(e) {
       divArtist.innerHTML = `by Prince feat. ${renderArtist}`;
       divLyrics.innerHTML = pifyLyrics;
     } catch {
+      // remove this error message at next search
       document.querySelector(".error").innerHTML = "👁️ couldn't find Ur song";
       console.error("something went wrong");
     }
