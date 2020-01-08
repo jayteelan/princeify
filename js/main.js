@@ -2,6 +2,19 @@
 const apiKey = "dc5c9b28a701d08bdfc60ec825c88602";
 const apiURL = "https://api.musixmatch.com/ws/1.1/";
 
+/* ----- LOCK SEARCH ON SCROLL ----- */
+const searchDiv = document.querySelector(".search");
+window.onscroll = function() {
+  if (
+    document.body.scrollTop > 390 ||
+    document.documentElement.scrollTop > 390
+  ) {
+    searchDiv.classList.add("search-lock");
+  } else {
+    searchDiv.classList.remove("search-lock");
+  }
+};
+
 /* ----- PLACEHOLDER STRINGS ----- */
 let renderArtist = "";
 let renderTitle = "";

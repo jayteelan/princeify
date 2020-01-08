@@ -1,1 +1,82 @@
-/* Love Symbol #2: #4F3D63
+/* Love Symbol #2: #4F3D63 */
+body {
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #4f3d63;
+  background-image: url(../images/crystals-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #f6e084;
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 24px;
+}
+/* ----- LOGO ----- */
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.logo svg {
+  z-index: -1;
+  transform: rotate(-10deg);
+}
+.logo p {
+  position: absolute;
+  margin: 0;
+  top: 7.2rem;
+  left: 8rem;
+  z-index: 0;
+  color: #c500a4;
+  text-shadow: 0 0 8px white, 0 0 20px black;
+  font-family: "Vampiro One", cursive;
+  font-size: 4.5em;
+  transform: rotate(-30deg);
+}
+
+/* ----- ABOUT ----- */
+.about {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff66;
+  padding: 0.75rem;
+  margin-top: -5.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 0.75rem;
+  color: #18324d;
+}
+.about p {
+  margin: 0;
+}
+.princeify {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  color: #c500a4;
+  text-shadow: 0 0 8px white, 0 0 20px black;
+}
+
+/* ----- FORM ----- */
+.search {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  transition: all 0.5s ease-in-out;
+}
+.search p {
+  margin-top: 0.5rem;
+}
+
+.search-lock {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background-image: linear-gradient(#4f3d63, #4f3d6300);
+  width: 100%;
+  height: 30vh;
+  margin: 0;
+  padding: 1rem;
+}
