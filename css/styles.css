@@ -255,6 +255,9 @@ body {
     top: 29rem;
     left: 4.5rem;
   }
+  .search input {
+    width: 8rem;
+  }
   .lyrics-div {
     width: 40%;
     max-height: 85vh;
