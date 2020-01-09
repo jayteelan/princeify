@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const renderDOM = () => {
     divTitle.innerHTML = renderTitle;
-    divArtist.innerHTML = `by Prince feat. ${renderArtist}`;
+    divArtist.innerHTML = `by <span class="princeify">Prince</span> feat. ${renderArtist}`;
     divLyrics.innerHTML = renderLyrics;
     lyricsDiv.classList.remove("hidden");
   };

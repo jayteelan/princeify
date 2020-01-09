@@ -6,7 +6,8 @@ const pifyOMG = {
   heart: "♥",
   money: "$",
   you: "U", //
-  ya: "U",
+  someone: "some1",
+  anyone: "any1",
   your: "Ur",
   see: "C",
   are: "R",
@@ -25,7 +26,7 @@ const pifyOMG = {
   know: "no", //
   with: "wit",
   flower: "flow3r",
-  Minneapolis: "Moneyapolis",
+  minneapolis: "Moneyapolis",
   artificial: "art official",
   hate: "h8",
   one: "1",
