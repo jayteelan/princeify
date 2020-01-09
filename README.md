@@ -106,7 +106,7 @@ const mutateLine = (lyricsArr, keyObject) => {
 
 **9. Jan, 2020**
 
-- incorporated CORS Anywhere URL
+- incorporated CORS Anywhere URL (and then removed it due to too many requests)
 - misc. minor tweaks
 
 **8. Jan, 2020**

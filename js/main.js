@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ----- MUSIXMATCH API ----- */
   const apiKey = "dc5c9b28a701d08bdfc60ec825c88602";
   const apiURL = "https://api.musixmatch.com/ws/1.1/";
-  const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
+  // const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
 
   /* ----- LOCK SEARCH ON SCROLL ----- */
   window.onscroll = function() {
@@ -112,14 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         // get artist name
         const resArtist = await axios.get(
-          `${corsAnywhere}${apiURL}artist.search?q_artist=${inputArtist}&page_size=1&apikey=${apiKey}`
+          `${apiURL}artist.search?q_artist=${inputArtist}&page_size=1&apikey=${apiKey}`
         );
         renderArtist =
           resArtist.data.message.body.artist_list[0].artist.artist_name;
         console.log("artist", renderArtist);
         // get song title
         const resTitle = await axios.get(
-          `${corsAnywhere}${apiURL}track.search?q_track=${inputTitle}&q_artist=${inputArtist}&page_size=1&apikey=${apiKey}`
+          `${apiURL}track.search?q_track=${inputTitle}&q_artist=${inputArtist}&page_size=1&apikey=${apiKey}`
         );
         let mxmTitle =
           resTitle.data.message.body.track_list[0].track.track_name;
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("title", renderTitle);
         // get lyrics
         const res = await axios.get(
-          `${corsAnywhere}${apiURL}matcher.lyrics.get?q_track=${inputTitle}&q_artist=${inputArtist}&apikey=${apiKey}`
+          `${apiURL}matcher.lyrics.get?q_track=${inputTitle}&q_artist=${inputArtist}&apikey=${apiKey}`
         );
         // shorthand for Musixmatch lyrics object, lyrics text, and copyright notice
         const mxmLyrObj = res.data.message.body.lyrics;
