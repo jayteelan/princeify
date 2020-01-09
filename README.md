@@ -62,7 +62,7 @@ updated_time: "2019-09-01T00:58:00Z"
 | Jan 4/5 | song lyric mutatation pseudocode            | Complete   |
 | Jan 6   | lyric mutation JS                           | Complete   |
 | Jan 7   | postMVP                                     | Incomplete |
-| Jan 8   | styling                                     | Incomplete |
+| Jan 8   | styling                                     | Complete   |
 | Jan 9   | present                                     | Incomplete |
 
 ## Priority Matrix
@@ -77,8 +77,8 @@ updated_time: "2019-09-01T00:58:00Z"
 | search/axios     |    H     |      3hrs      |         6hrs         |    6hrs     |
 | mutations        |    H     |    8-10hrs     | 9hrs + 6 hrs rewrite |    15hrs    |
 | DOM render       |    H     |      3hrs      |        0.5hrs        |   0.5hrs    |
-| styling          |    M     |     8 hrs      |                      |             |
-| Total            |    H     |    25-27hrs    |                      |             |
+| styling          |    M     |     8 hrs      |         9hrs         |    9hrs     |
+| Total            |    H     |    25-27hrs    |       32.5hrs        |   32.5hrs   |
 
 ## Code Snippet
 
@@ -103,6 +103,12 @@ const mutateLine = (lyricsArr, keyObject) => {
 ```
 
 ## Change Log
+
+**8. Jan, 2020**
+
+- fully styled
+- added responsive layouts
+- added JS to gradually reveal divs
 
 **7. Jan, 2020**
 
