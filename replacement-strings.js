@@ -1,34 +1,35 @@
 /*  --------- HOW PRINCE WRITES --------- */
 // with thanks to PrinceVault.com
 const pifyOMG = {
-  i: "👁️ ", //
+  i: "👁️ ",
   of: "'☮️'",
   heart: "♥",
   money: "$",
-  you: "U", //
+  you: "U",
   someone: "some1",
   anyone: "any1",
   your: "Ur",
   see: "C",
   are: "R",
   why: "Y",
-  to: "2", //
-  too: "2", //
+  to: "2",
+  too: "2",
   tonight: "2 night",
   tomorrow: "2morrow",
-  for: "4", //
+  for: "4",
   fore: "4",
-  be: "B", //
+  be: "B",
   bee: "B",
   before: "B4",
   into: "in2",
   unto: "un2",
-  know: "no", //
+  know: "no",
   with: "wit",
   flower: "flow3r",
   minneapolis: "Moneyapolis",
   artificial: "art official",
   hate: "h8",
+  forever: "4ever",
   one: "1",
   two: "2",
   three: "3",

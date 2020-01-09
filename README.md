@@ -104,6 +104,11 @@ const mutateLine = (lyricsArr, keyObject) => {
 
 ## Change Log
 
+**9. Jan, 2020**
+
+- incorporated CORS Anywhere URL
+- misc. minor tweaks
+
 **8. Jan, 2020**
 
 - fully styled
