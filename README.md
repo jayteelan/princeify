@@ -82,7 +82,7 @@ updated_time: "2019-09-01T00:58:00Z"
 
 ## Code Snippet
 
-Use this section to include a brief code snippet of functionality that you are proud of an a brief description
+this is the function to mutate the lyric text after it's been converted to an array of lines. it generates a RegEx from an object composed of target words (keys) and their replacements (values), repecting word boundaries. once the RegEx has been created, the function mutates each line (element) from the lyric array and pushes it to an empty array for "Princeified" lyrics.
 
 ```
 
