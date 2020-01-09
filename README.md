@@ -63,6 +63,7 @@ updated_time: "2019-09-01T00:58:00Z"
 | Jan 6   | lyric mutation JS                           | Complete   |
 | Jan 7   | postMVP                                     | Incomplete |
 | Jan 8   | styling                                     | Complete   |
+| Jan 9   | deployment                                  | Complete   |
 | Jan 9   | present                                     | Incomplete |
 
 ## Priority Matrix
@@ -78,6 +79,7 @@ updated_time: "2019-09-01T00:58:00Z"
 | mutations        |    H     |    8-10hrs     | 9hrs + 6 hrs rewrite |    15hrs    |
 | DOM render       |    H     |      3hrs      |        0.5hrs        |   0.5hrs    |
 | styling          |    M     |     8 hrs      |         9hrs         |    9hrs     |
+| deployment       |    H     |      1hr       |         1 hr         |     1hr     |
 | Total            |    H     |    25-27hrs    |       32.5hrs        |   32.5hrs   |
 
 ## Code Snippet
@@ -108,6 +110,7 @@ const mutateLine = (lyricsArr, keyObject) => {
 
 - incorporated CORS Anywhere URL (and then removed it due to too many requests)
 - misc. minor tweaks
+- deployed on GH-pages
 
 **8. Jan, 2020**
 
