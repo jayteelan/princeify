@@ -87,8 +87,9 @@ body {
   width: 3em;
 }
 .search button {
-  background-color: #bbb;
+  background-color: #bbbbbbbb;
   border-radius: 5px;
+  color: #18324d;
 }
 .search-lock {
   position: fixed;
